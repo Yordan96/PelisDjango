@@ -19,24 +19,31 @@
 
      <nav>
     <div class="nav-wrapper  indigo darken-4">
-      <a href="#!" class="brand-logo"><i class="material-icons">movie_filter</i>Peliculiando</a>
+      <a href="{% url 'lista_peliculas' %}" class="brand-logo"><i class="material-icons">movie_filter</i>Peliculiando</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="{% url 'nueva_renta' %} "><i class="material-icons">shopping_cart</i></a></li>
 
+         {% if user.is_authenticated %}
+         <li><a href="{% url 'nueva_renta' %} "><i class="material-icons">add_shopping_cart</i></a></li>
+         {% if user.is_superuser%}
         <li><a href="{% url 'nueva_pelicula' %}"><i class="material-icons">movie</i></a></li>
-        <li><a href=""><i class="material-icons">refresh</i></a></li>
-        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+         {% endif %}
+        <li><a href="{% url 'logout' %}"><i class="material-icons">highlight_off</i></a></li>
+        {% else %}
+        <li><a href="{% url 'registrar' %}"><i class="material-icons">person</i></a></li>
+        <li><a href="{% url 'login' %}"><i class="material-icons">input</i></a></li>
+       {% endif %}
       </ul>
     </div>
   </nav>
+  <p class="top-menu">Ingreso como: {{ user.username }}</p>
  <div class="container">
 {% block content %}
 {% endblock %}
 
 </div>
-        {% block footer %}
+
            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
            <script type="text/javascript" src="{% static 'materialize/bin/materialize.js' %}"></script>
-       {% endblock %}
+
      </body>
    </html>

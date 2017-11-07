@@ -2,6 +2,8 @@ from django import forms
 
 from .models import Pelicula, Usuario
 
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 class UsuarioForm(forms.ModelForm):
 #todos los campos de Pelicula
     class Meta:
@@ -18,3 +20,9 @@ class PeliculaForm(forms.ModelForm):
     class Meta:
         model= Pelicula
         fields =('titulo','idioma','genero','duracion','anio')
+
+class RegistroForm(UserCreationForm):
+    class Meta:
+        model=User
+        fields=('username','first_name','last_name','email',)
+        labels={'username':'Nombre de usuario','firts_name':'nombre','last_name':'apellido','email':'Correo',}

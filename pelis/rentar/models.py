@@ -23,7 +23,7 @@ class Usuario(models.Model):
         return self.nombre
 
 class Alquiler(models.Model):
-    actor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE)
 
 class AlquilerInLine(admin.TabularInline):
