@@ -13,3 +13,8 @@ class UsuarioForm(forms.ModelForm):
         self.fields["peliculas"].widget = forms.widgets.CheckboxSelectMultiple()
         self.fields["peliculas"].help_text = "Seleccióne las peliculas que quiere alquilar"
         self.fields["peliculas"].queryset = Pelicula.objects.all()
+
+class PeliculaForm(forms.ModelForm):
+    class Meta:
+        model= Pelicula
+        fields =('titulo','idioma','genero','duracion','anio')

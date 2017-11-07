@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-from .forms import UsuarioForm
+from .forms import UsuarioForm, PeliculaForm
 from rentar.models import Pelicula, Alquiler
 # Create your views here.
 
@@ -21,3 +21,14 @@ def nueva_renta(request):
 def lista_peliculas(request):
     pelis = Pelicula.objects.all()
     return render(request,'rentar/lista_peliculas.html',{'pelis': pelis})
+
+def nueva_pelicula(request):
+    if request.method == "POST":
+        form =  PeliculaForm(request.POST)
+        if form.is_valid():
+            pelicula = form.save(commit=False)
+            pelicula.save()
+            return redirect('alquiler/lista_peliculas/')
+    else:
+        form=PeliculaForm()
+    return render(request,'rentar/pelicula_editar.html',{'form': form})
