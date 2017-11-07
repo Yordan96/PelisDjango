@@ -1,0 +1,6 @@
+{% extends 'rentar/base.html' %}
+    {% block content %}
+  {% for renta in rentas %}
+{{ renta.nombre }}
+  {% endfor %}
+{% endblock %}

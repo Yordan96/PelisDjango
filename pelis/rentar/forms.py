@@ -8,7 +8,7 @@ class UsuarioForm(forms.ModelForm):
 #todos los campos de Pelicula
     class Meta:
         model = Usuario
-        fields = ('nombre', 'telefono', 'DPI', 'fecha_nacimiento', 'peliculas')
+        fields = ('nombre', 'telefono', 'DPI', 'fecha_nacimiento','peliculas')
 
     def __init__ (self, *args, **kwargs):
         super(UsuarioForm, self).__init__(*args, **kwargs)
@@ -19,7 +19,7 @@ class UsuarioForm(forms.ModelForm):
 class PeliculaForm(forms.ModelForm):
     class Meta:
         model= Pelicula
-        fields =('titulo','idioma','genero','duracion','anio')
+        fields =('titulo','idioma','genero','duracion','anio',)
 
 class RegistroForm(UserCreationForm):
     class Meta:

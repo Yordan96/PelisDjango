@@ -15,6 +15,11 @@
                 <p><strong>Duración:</strong> {{ pelicula.duracion}}</p>
                 <p><strong>Género:</strong> {{ pelicula.genero}}</p>
                 <p>{{ pelicula.text|linebreaksbr }}</p>
+                {% if user.is_authenticated %}
+                {% if user.is_superuser%}
+                <a class="btn-floating btn-small waves-effect waves-light blue " href="{% url 'editar_pelicula' pk=pelicula.pk %}"><i class="material-icons">edit</i></a>
+                {% endif %}
+                {% endif %}
               </div>
                  </div>
                </div>
